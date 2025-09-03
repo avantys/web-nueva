@@ -1,0 +1,168 @@
+---
+---
+
+<section class="services-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Servicios Profesionales Incluidos</h2>
+            <p class="section-subtitle">Soporte completo y especializado para que te enfoques en tu negocio mientras nosotros gestionamos tu infraestructura</p>
+        </div>
+
+        <div class="content-grid">
+            <!-- Administración de servidores -->
+            <div class="info-card">
+                <i class="fas fa-user-cog card-icon"></i>
+                <h3 class="card-title">Administración de servidores profesional</h3>
+                <p class="card-description">
+                    En Avantys no solo te damos un VPS: también nos encargamos de la <strong>instalación, configuración inicial, hardening de seguridad</strong> y <strong>monitorización proactiva 24/7</strong> sin coste adicional.
+                </p>
+                <div class="status-badges">
+                    <span class="badge badge-basic">🔧 Básica</span>
+                    <span class="badge badge-optional">⚡ Avanzada</span>
+                </div>
+            </div>
+
+            <!-- Backups y snapshots -->
+            <div class="info-card">
+                <i class="fas fa-shield-alt card-icon"></i>
+                <h3 class="card-title">Backups automáticos y snapshots instantáneos</h3>
+                <p class="card-description">
+                    Protege tus datos críticos con <strong>copias de seguridad diarias automatizadas</strong> y <strong>snapshots bajo demanda</strong>, listos para restaurar tu servidor completo en menos de 60 segundos.
+                </p>
+                <div class="status-badges">
+                    <span class="badge badge-included">✅ Incluido</span>
+                    <span class="badge badge-optional">🔵 Avanzados</span>
+                </div>
+            </div>
+
+            <!-- Soporte en español -->
+            <div class="info-card">
+                <i class="fas fa-headset card-icon"></i>
+                <h3 class="card-title">Soporte técnico especializado en español</h3>
+                <p class="card-description">
+                    Accede a nuestro <strong>equipo de ingenieros certificados</strong> en tu idioma, disponible <strong>24/7 via chat, ticket y teléfono</strong> para resolver cualquier incidencia o consulta técnica sobre tu VPS.
+                </p>
+                <div class="status-badges">
+                    <span class="badge badge-included">✅ Incluido</span>
+                </div>
+            </div>
+
+            <!-- Instalación de software -->
+            <div class="info-card">
+                <i class="fas fa-download card-icon"></i>
+                <h3 class="card-title">Instalación y optimización de software</h3>
+                <p class="card-description">
+                    Instalamos y optimizamos <strong>WordPress, WooCommerce, n8n, Odoo, Moodle, Mautic, Docker</strong> y más de 50 aplicaciones empresariales. Tu software listo y configurado desde el primer día.
+                </p>
+                <div class="status-badges">
+                    <span class="badge badge-basic">🔧 Estándar</span>
+                    <span class="badge badge-optional">⭐ Premium</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.services-section {
+    padding: 60px 0;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.info-card {
+    background: white;
+    border: 1px solid rgba(60, 60, 60, 0.15);
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 32, 64, 0.08);
+    text-align: center;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(133, 96, 204, 0.15);
+    border-color: var(--color-accent);
+}
+
+.card-icon {
+    font-size: 2.8rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover .card-icon {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-primary);
+    line-height: 1.3;
+    font-family: var(--font-family);
+}
+
+.card-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-secondary);
+    margin-bottom: 24px;
+    font-family: var(--font-family);
+}
+
+.status-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.badge-basic {
+    background: var(--color-blue);
+    color: white;
+}
+
+.info-card:hover .badge-included {
+    background: var(--color-accent);
+}
+
+.info-card:hover .badge-optional {
+    background: var(--color-primary);
+}
+
+.info-card:hover .badge-basic {
+    background: var(--color-primary);
+}
+
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .info-card {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .status-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
