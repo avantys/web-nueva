@@ -1,0 +1,157 @@
+/* ===== GLOBAL STYLES AVANTYS VPS - styles/global.css ===== */
+
+/* Colores globales Avantys */
+:root {
+  --color-primary: #002040;
+  --color-secondary: #3C3C3C;
+  --color-accent: #8560CC;
+  --color-blue: #2C70B1;
+  --color-green: #1E743E;
+  --color-white: #FFFFFF;
+  --color-gray-light: #f8fafc;
+  --color-gray-medium: #64748b;
+  
+  --font-family: 'Museo Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-secondary);
+  line-height: 1.6;
+}
+
+/* Contenedores globales */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-spacing {
+  padding: 60px 0;
+}
+
+/* Headers globales */
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  font-family: var(--font-family);
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-family: var(--font-family);
+}
+
+/* Botones globales */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  font-family: var(--font-family);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.btn-secondary:hover {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* Badges globales */
+.badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--font-family);
+}
+
+.badge-included {
+  background: var(--color-primary);
+  color: white;
+}
+
+.badge-optional {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* Cards globales */
+.card {
+  background: white;
+  border: 1px solid rgba(60, 60, 60, 0.15);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 32, 64, 0.08);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(133, 96, 204, 0.15);
+  border-color: var(--color-accent);
+}
+
+/* Responsive global */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-spacing {
+    padding: 40px 0;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
