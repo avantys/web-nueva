@@ -1,9 +1,8 @@
 name: Deploy Astro to GitHub Pages
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch:
-
+    branches: ["main"]
+  pull_request:
 permissions:
   contents: read
   pages: write
@@ -23,6 +22,7 @@ jobs:
           path: ./dist
 
   deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     environment:
@@ -31,4 +31,3 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
-
