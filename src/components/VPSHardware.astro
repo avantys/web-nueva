@@ -1,0 +1,137 @@
+---
+---
+
+<section class="hardware-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Hardware Empresarial de Última Generación</h2>
+            <p class="section-subtitle">Infraestructura tecnológica premium con componentes de alto rendimiento para garantizar máxima potencia y fiabilidad</p>
+        </div>
+
+        <div class="content-grid">
+            <!-- Almacenamiento NVMe -->
+            <div class="info-card">
+                <i class="fas fa-hdd card-icon"></i>
+                <h3 class="card-title">Almacenamiento NVMe ultrarrápido</h3>
+                <p class="card-description">
+                    Todos nuestros VPS incluyen <strong>discos SSD NVMe Enterprise</strong>, hasta <strong>6 veces más rápidos</strong> que los SSD SATA tradicionales. Optimizado para <strong>bases de datos MySQL</strong>, webs y aplicaciones críticas.
+                </p>
+                <span class="badge badge-included">✅ Incluido</span>
+            </div>
+
+            <!-- Procesadores -->
+            <div class="info-card">
+                <i class="fas fa-microchip card-icon"></i>
+                <h3 class="card-title">Procesadores Intel Xeon y AMD EPYC</h3>
+                <p class="card-description">
+                    Servidores equipados con <strong>CPUs Intel Xeon Gold</strong> y <strong>AMD EPYC de última generación</strong> que garantizan <strong>estabilidad empresarial</strong> y rendimiento constante en proyectos críticos 24/7.
+                </p>
+                <span class="badge badge-included">✅ Incluido</span>
+            </div>
+
+            <!-- Escalabilidad -->
+            <div class="info-card">
+                <i class="fas fa-expand-arrows-alt card-icon"></i>
+                <h3 class="card-title">Escalabilidad instantánea de recursos</h3>
+                <p class="card-description">
+                    Amplía <strong>CPU cores, memoria RAM DDR4</strong> o <strong>almacenamiento SSD</strong> de tu VPS en tiempo real, <strong>sin migraciones ni interrupciones de servicio</strong>. Perfecto para crecimiento empresarial.
+                </p>
+                <span class="badge badge-included">✅ Incluido</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.hardware-section {
+    padding: 60px 0;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.info-card {
+    background: white;
+    border: 1px solid rgba(60, 60, 60, 0.15);
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 32, 64, 0.08);
+    text-align: center;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(133, 96, 204, 0.15);
+    border-color: var(--color-accent);
+}
+
+.card-icon {
+    font-size: 2.8rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover .card-icon {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--color-primary);
+    line-height: 1.3;
+    font-family: var(--font-family);
+}
+
+.card-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-secondary);
+    margin-bottom: 24px;
+    font-family: var(--font-family);
+}
+
+.info-card:hover .badge-included {
+    background: var(--color-accent);
+}
+
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    .content-grid .info-card:nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .content-grid .info-card:nth-child(3) {
+        grid-column: 1;
+        max-width: none;
+        margin: 0;
+    }
+    
+    .info-card {
+        padding: 24px;
+    }
+}
+</style>
