@@ -1,22 +1,136 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPS Administrados - Avantys</title>
+    <meta name="description" content="Servidores VPS administrados desde 10,90€/mes. Soporte 24/7 en español, backups automáticos y tráfico ilimitado. Configuración en 5 minutos.">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Global Styles -->
+    <style>
+    /* Global CSS Variables */
+    :root {
+      --color-primary: #002040;
+      --color-secondary: #3C3C3C;
+      --color-accent: #8560CC;
+      --color-blue: #2C70B1;
+      --color-green: #1E743E;
+      --color-white: #FFFFFF;
+      --color-gray-light: #f8fafc;
+      --color-gray-medium: #64748b;
+      
+      --font-family: 'Museo Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family);
+      color: var(--color-secondary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-spacing {
+      padding: 60px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 16px;
+      font-family: var(--font-family);
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--color-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-family: var(--font-family);
+    }
+
+    .badge {
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-family: var(--font-family);
+    }
+
+    .badge-included {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .badge-optional {
+      background: var(--color-accent);
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .section-spacing {
+        padding: 40px 0;
+      }
+      
+      .container {
+        padding: 0 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+    </style>
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Avantys",
+      "description": "Servidores VPS administrados con soporte 24/7 en español",
+      "url": "https://avantys.com",
+      "offers": {
+        "@type": "Offer",
+        "category": "VPS Hosting",
+        "price": "10.90",
+        "priceCurrency": "EUR",
+        "priceValidUntil": "2025-12-31"
+      }
+    }
+    </script>
+</head>
+<body>
+    <main>
+        <slot />
+    </main>
+</body>
+</html>
