@@ -1,0 +1,115 @@
+---
+const canonicalURL = new URL('vps', Astro.site);
+const currentDate = new Date().toISOString();
+---
+<!DOCTYPE html>
+<html lang="es" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VPS Hosting España - Servidores Virtuales desde €10.90/mes | Avantys</title>
+  <meta name="description" content="VPS hosting en España con SSD NVMe, 99.9% uptime y soporte 24/7. Servidores Linux y Windows desde €10.90/mes." />
+  <link rel="canonical" href={canonicalURL} />
+  <meta property="og:title" content="VPS Hosting España - Servidores Virtuales desde €10.90/mes" />
+  <meta property="og:description" content="VPS hosting en España con SSD NVMe, 99.9% uptime y soporte 24/7. Setup en 60 segundos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:site_name" content="Avantys VPS Hosting" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@AvantysHosting" />
+  <meta name="twitter:title" content="VPS Hosting España - Servidores Virtuales desde €10.90/mes" />
+  <meta name="twitter:description" content="VPS hosting con SSD NVMe, 99.9% uptime y soporte 24/7." />
+  <style>
+    body {font-family: 'Inter', sans-serif; margin:0; color:#333;}
+    .hero {background:linear-gradient(135deg,#002040 0%,#2C70B1 100%);color:#fff;padding:4rem 1rem;text-align:center;}
+    .hero h1 {font-size:clamp(2rem,5vw,3rem);margin-bottom:1rem;}
+    .hero-features {display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:2rem auto;max-width:800px;}
+    .hero-feature {background:rgba(255,255,255,0.1);padding:1rem;border-radius:8px;}
+    section {padding:4rem 1rem;max-width:1200px;margin:auto;}
+    h2 {color:#002040;text-align:center;margin-bottom:2rem;font-size:2rem;}
+    ul {list-style:none;padding:0;}
+    .plan-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
+    .plan {border:1px solid #ddd;border-radius:8px;padding:1.5rem;text-align:center;}
+    .faq-item {margin-bottom:1rem;border:1px solid #e0e0e0;border-radius:8px;}
+    .faq-item summary {padding:1rem;cursor:pointer;font-weight:600;background:#f8f9fa;}
+    footer {background:#002040;color:#fff;text-align:center;padding:2rem 1rem;}
+  </style>
+</head>
+<body>
+  <nav class="breadcrumbs" aria-label="Migas de pan" style="background:#f8f9fa;padding:0.75rem 1rem;font-size:0.9rem;">
+    <a href="/">Inicio</a> » <span aria-current="page">VPS Hosting</span>
+  </nav>
+
+  <header class="hero">
+    <h1>VPS Hosting España - Servidores Virtuales de Alto Rendimiento</h1>
+    <p class="lead">Potencia tu proyecto con VPS hosting optimizado. SSD NVMe, 99.9% uptime y soporte 24/7 desde €10.90/mes.</p>
+    <div class="hero-features">
+      <div class="hero-feature"><strong>⚡ Setup en 60s</strong><p>Tu VPS listo al instante</p></div>
+      <div class="hero-feature"><strong>🛡️ 99.9% Uptime</strong><p>Disponibilidad garantizada</p></div>
+      <div class="hero-feature"><strong>💬 Soporte 24/7</strong><p>Expertos en español</p></div>
+      <div class="hero-feature"><strong>🚀 SSD NVMe</strong><p>Máximo rendimiento</p></div>
+    </div>
+    <a href="#planes" class="cta-primary" style="display:inline-block;background:#8560CC;padding:1rem 2rem;border-radius:8px;color:#fff;text-decoration:none;font-weight:600;">Ver Planes VPS</a>
+  </header>
+
+  <section class="what-is-vps">
+    <h2>¿Qué es un VPS?</h2>
+    <p>Un <strong>Servidor Privado Virtual (VPS)</strong> combina la flexibilidad del hosting compartido con el control de un servidor dedicado. Proporciona recursos dedicados, acceso root completo y escalabilidad para aplicaciones web, e-commerce y más.</p>
+    <ul class="vps-benefits">
+      <li>✓ Recursos garantizados (CPU, RAM, almacenamiento)</li>
+      <li>✓ Acceso root completo</li>
+      <li>✓ Escalabilidad inmediata</li>
+      <li>✓ Aislamiento total de otros usuarios</li>
+    </ul>
+  </section>
+
+  <section id="planes">
+    <h2>Planes VPS Hosting</h2>
+    <div class="plan-grid">
+      <div class="plan">
+        <h3>VPS Starter</h3>
+        <p><strong>€10.90/mes</strong></p>
+        <ul>
+          <li>1 CPU Core</li>
+          <li>2GB RAM</li>
+          <li>25GB SSD NVMe</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>VPS Business</h3>
+        <p><strong>€24.95/mes</strong></p>
+        <ul>
+          <li>2 CPU Cores</li>
+          <li>4GB RAM</li>
+          <li>80GB SSD NVMe</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>VPS Enterprise</h3>
+        <p><strong>€59.90/mes</strong></p>
+        <ul>
+          <li>4 CPU Cores</li>
+          <li>8GB RAM</li>
+          <li>160GB SSD NVMe</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>Preguntas Frecuentes</h2>
+    <details class="faq-item">
+      <summary>¿Qué es un VPS?</summary>
+      <p>Un VPS es un servidor virtualizado con recursos dedicados y mayor control que el hosting compartido.</p>
+    </details>
+    <details class="faq-item">
+      <summary>¿Puedo actualizar mi plan?</summary>
+      <p>Sí, puedes escalar recursos como CPU, RAM o almacenamiento en cualquier momento.</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Avantys. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
