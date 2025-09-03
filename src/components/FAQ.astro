@@ -1,0 +1,62 @@
+---
+const faqs = [
+  { question: '¿Qué es Avantys VPS?', answer: 'Nuestro servicio de hosting VPS con alto rendimiento y seguridad.' },
+  { question: '¿Cómo puedo empezar?', answer: 'Elige un plan, regístrate y tu servidor estará listo en minutos.' },
+  { question: '¿Puedo escalar mi plan?', answer: 'Sí, puedes ampliar recursos cuando lo necesites sin interrupciones.' }
+];
+---
+<section class="faq-section section-spacing">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <p class="section-subtitle">Resuelve tus dudas comunes</p>
+    </div>
+    <div class="faq-list">
+      {faqs.map((faq, index) => (
+        <div class="faq-item" id={`faq-${index}`}>
+          <button type="button" class="faq-question">{faq.question}</button>
+          <p class="faq-answer">{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.faq-question').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  });
+</script>
+
+<style>
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(60, 60, 60, 0.15);
+}
+.faq-question {
+  width: 100%;
+  padding: 16px;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-primary);
+}
+.faq-answer {
+  display: none;
+  padding: 0 16px 16px;
+  color: var(--color-secondary);
+}
+.faq-item.open .faq-answer {
+  display: block;
+}
+</style>

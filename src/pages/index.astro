@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import VPSSoftware from '../components/VPSSoftware.astro';
+import FAQ from '../components/FAQ.astro';
 const services = [
   { icon: '💻', title: 'Desarrollo Web', desc: 'Sitios modernos y rápidos.' },
   { icon: '📱', title: 'Aplicaciones Móviles', desc: 'Apps nativas para iOS y Android.' },
@@ -25,6 +26,7 @@ const services = [
   </section>
 
   <VPSSoftware />
+  <FAQ />
   <footer>
     <p>&copy; {new Date().getFullYear()} Mi sitio</p>
   </footer>
