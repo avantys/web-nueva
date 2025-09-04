@@ -1,0 +1,205 @@
+---
+// src/components/common/Header.astro
+import { NAVIGATION_LINKS, CONTACT_INFO } from '../../utils/constants';
+import { withBase } from '../../utils/paths';
+---
+
+<nav class="site-header">
+  <div class="container-custom">
+    <div class="site-header-grid">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href={withBase('/')} class="logo-link" aria-label="Avantys - Inicio">
+          <img src={withBase('/images/logo.svg')} alt="Avantys - Logo" class="logo-img" width="180" height="48" loading="eager" decoding="async" />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="nav">
+        <div class="nav-list">
+          {NAVIGATION_LINKS.map((link) => {
+            const color = (link.color ?? 'primary') as 'primary'|'comienza'|'crece'|'crea'|'transforma';
+            const hasSub = Array.isArray(link.submenu) && link.submenu.length > 0;
+            const isComienza = hasSub && link.name.toLowerCase() === 'comienza';
+
+            return (
+              <div class="relative group">
+                {hasSub ? (
+                  <button class={`nav-trigger hover-${color}`} data-dropdown-toggle={link.name.toLowerCase()} aria-haspopup="true" aria-expanded="false">
+                    {link.name}
+                    <svg class="ml-1 h-4 w-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                ) : (
+                  <a href={withBase(link.href)} class={`nav-trigger hover-${color}`}>{link.name}</a>
+                )}
+
+                {/* Megamenú "Comienza" */}
+                {isComienza && (
+                  <div id={link.name.toLowerCase()} class="dropdown-panel megamenu">
+                    <div class="grid grid-cols-12">
+                      <!-- Promos izquierda -->
+                      <div class="col-span-5 p-6 border-r border-border-light">
+                        <div class="space-y-4">
+                          <div class="promo-card">
+                            <h3 class="text-base font-bold text-text-primary">Tu sitio web más rápido y seguro</h3>
+                            <p class="text-sm text-text-secondary mt-1">Descubre nuestro hosting web con cPanel, CloudLinux y LiteSpeed en discos SSD NVMe.</p>
+                            <a href={withBase('/comienza/hosting')} class="menu-cta bgbtn-comienza mt-3">Más información</a>
+                          </div>
+                          <div class="promo-card">
+                            <h3 class="text-base font-bold text-text-primary">Administramos tus servidores o proyectos</h3>
+                            <p class="text-sm text-text-secondary mt-1">Concéntrate en tu negocio mientras nosotros nos ocupamos 24/7.</p>
+                            <a href={withBase('/transforma/administracion-servidores')} class="menu-cta bgbtn-transforma mt-3">Más información</a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Links derecha -->
+                      <div class="col-span-7 p-6">
+                        <div class="menu-grid">
+                          <div>
+                            <h4 class="menu-title">Dominios</h4>
+                            <div class="menu-block">
+                              <a href={withBase('/comienza/dominios')} class="menu-link">
+                                <div class="flex items-start gap-3">
+                                  <div class="icon-badge tintbg-comienza"><svg class="w-4 h-4 tint-comienza" viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                  <div class="flex-1">
+                                    <div class="text-sm font-semibold text-text-primary">Comprar Dominio</div>
+                                    <p class="text-xs text-text-secondary mt-1">Elige y registra el dominio ideal para tu proyecto.</p>
+                                  </div>
+                                </div>
+                              </a>
+                              <a href={withBase('/comienza/dominios')} class="menu-link">
+                                <div class="flex items-start gap-3">
+                                  <div class="icon-badge tintbg-comienza"><svg class="w-4 h-4 tint-comienza" viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                  <div class="flex-1">
+                                    <div class="text-sm font-semibold text-text-primary">Transferir Dominio</div>
+                                    <p class="text-xs text-text-secondary mt-1">Transfiere tu dominio: rápido y sin complicaciones.</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+
+                          <div>
+                            <h4 class="menu-title">Hosting</h4>
+                            <div class="menu-block">
+                              <a href={withBase('/comienza/hosting-wordpress')} class="menu-link">
+                                <div class="flex items-start gap-3">
+                                  <div class="icon-badge tintbg-comienza"><svg class="w-4 h-4 tint-comienza" viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                  <div class="flex-1">
+                                    <div class="text-sm font-semibold text-text-primary">Hosting WordPress</div>
+                                    <p class="text-xs text-text-secondary mt-1">WordPress optimizado: rápido, seguro y siempre actualizado.</p>
+                                  </div>
+                                </div>
+                              </a>
+                              <a href={withBase('/comienza/hosting')} class="menu-link">
+                                <div class="flex items-start gap-3">
+                                  <div class="icon-badge tintbg-comienza"><svg class="w-4 h-4 tint-comienza" viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                  <div class="flex-1">
+                                    <div class="text-sm font-semibold text-text-primary">Hosting Web</div>
+                                    <p class="text-xs text-text-secondary mt-1">Hosting web robusto para sitios dinámicos y escalables.</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="mt-5 pt-4 border-t border-border-light">
+                          <a href={withBase(link.href)} class="menu-cta bgbtn-comienza">Ver todos los servicios de {link.name}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Dropdown simple para el resto */}
+                {!isComienza && hasSub && (
+                  <div id={link.name.toLowerCase()} class="dropdown-panel dropdown">
+                    <div class="p-4 grid grid-cols-1 gap-2">
+                      {link.submenu!.map((sublink) => (
+                        <a href={withBase(sublink.href)} class="menu-link">
+                          <div class="flex items-start gap-3">
+                            <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                            <div class="flex-1">
+                              <h3 class="text-sm font-semibold text-text-primary">{sublink.name}</h3>
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-border-light">
+                      <a href={withBase(link.href)} class={`menu-cta bgbtn-${color} w-full text-center`}>Ver todos los servicios de {link.name}</a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Acciones -->
+      <div class="flex items-center justify-end gap-4">
+        <a href={CONTACT_INFO.clientPanel} target="_blank" rel="noopener noreferrer" class="btn-client">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+          Área del cliente
+        </a>
+
+        <button type="button" class="btn-burger" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+          <span class="sr-only">Abrir menú principal</span>
+          <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile -->
+    <div class="lg:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-border-light">
+        {NAVIGATION_LINKS.map((link) => (
+          <div>
+            <a href={withBase(link.href)} class="mobile-link">{link.name}</a>
+            {Array.isArray(link.submenu) && link.submenu.length > 0 && (
+              <div class="ml-4 space-y-1">
+                {link.submenu.map((sublink) => (
+                  <a href={withBase(sublink.href)} class="mobile-sublink">{sublink.name}</a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', () => {
+      const isHidden = menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', !isHidden);
+      btn.setAttribute('aria-expanded', String(isHidden));
+    });
+
+    document.addEventListener('click', (e) => {
+      const t = e.target;
+      if (!(t instanceof Node)) return;
+      if (!menu.contains(t) && !btn.contains(t)) {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    }, true);
+  });
+</script>
+
+<style>
+  @media (hover: hover) {
+    .group:hover [aria-haspopup="true"] svg { transform: rotate(180deg); transition: transform .2s ease; }
+  }
+</style>

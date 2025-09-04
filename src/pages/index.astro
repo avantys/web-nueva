@@ -1,22 +1,21 @@
 ---
-import Base from '../layouts/Base.astro';
-import VPSHardware from '../components/VPSHardware.astro';
-import VPSNetwork from '../components/VPSNetwork.astro';
-import VPSServices from '../components/VPSServices.astro';
-import VPSSoftware from '../components/VPSSoftware.astro';
+// src/pages/index.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/common/Header.astro";
 ---
-<Base>
-  <section class="hero">
-    <h1>Bienvenido a Astro</h1>
-    <p>Desarrolla sitios más rápidos con menos JavaScript.</p>
-    <a href="#" class="btn">Comienza ahora</a>
+
+<BaseLayout title="Inicio">
+  <fragment slot="header">
+    <Header />
+  </fragment>
+
+  <section class="section container-custom">
+    <h1 class="text-h1 text-primary">Bienvenido a Avantys 🚀</h1>
+    <p class="mt-4 text-text-secondary">Tailwind + Layout funcionando.</p>
+    <button class="btn btn-primary mt-6">CTA</button>
   </section>
 
-  <VPSHardware />
-  <VPSNetwork />
-  <VPSServices />
-  <VPSSoftware />
-  <footer>
-    <p>&copy; {new Date().getFullYear()} Mi sitio</p>
-  </footer>
-</Base>
+  <fragment slot="footer">
+    <div class="container-custom py-6 text-sm">Footer temporal</div>
+  </fragment>
+</BaseLayout>
