@@ -1,41 +1,18 @@
 ---
-const canonicalURL = new URL('vps', Astro.site);
-const currentDate = new Date().toISOString();
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/common/Header.astro";
+
+const canonical = new URL('vps', Astro.site);
 ---
-<!DOCTYPE html>
-<html lang="es" prefix="og: https://ogp.me/ns#">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VPS Hosting España - Servidores Virtuales desde €10.90/mes | Avantys</title>
-  <meta name="description" content="VPS hosting en España con SSD NVMe, 99.9% uptime y soporte 24/7. Servidores Linux y Windows desde €10.90/mes." />
-  <link rel="canonical" href={canonicalURL} />
-  <meta property="og:title" content="VPS Hosting España - Servidores Virtuales desde €10.90/mes" />
-  <meta property="og:description" content="VPS hosting en España con SSD NVMe, 99.9% uptime y soporte 24/7. Setup en 60 segundos." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={canonicalURL} />
-  <meta property="og:site_name" content="Avantys VPS Hosting" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@AvantysHosting" />
-  <meta name="twitter:title" content="VPS Hosting España - Servidores Virtuales desde €10.90/mes" />
-  <meta name="twitter:description" content="VPS hosting con SSD NVMe, 99.9% uptime y soporte 24/7." />
-  <style>
-    body {font-family: 'Inter', sans-serif; margin:0; color:#333;}
-    .hero {background:linear-gradient(135deg,#002040 0%,#2C70B1 100%);color:#fff;padding:4rem 1rem;text-align:center;}
-    .hero h1 {font-size:clamp(2rem,5vw,3rem);margin-bottom:1rem;}
-    .hero-features {display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:2rem auto;max-width:800px;}
-    .hero-feature {background:rgba(255,255,255,0.1);padding:1rem;border-radius:8px;}
-    section {padding:4rem 1rem;max-width:1200px;margin:auto;}
-    h2 {color:#002040;text-align:center;margin-bottom:2rem;font-size:2rem;}
-    ul {list-style:none;padding:0;}
-    .plan-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
-    .plan {border:1px solid #ddd;border-radius:8px;padding:1.5rem;text-align:center;}
-    .faq-item {margin-bottom:1rem;border:1px solid #e0e0e0;border-radius:8px;}
-    .faq-item summary {padding:1rem;cursor:pointer;font-weight:600;background:#f8f9fa;}
-    footer {background:#002040;color:#fff;text-align:center;padding:2rem 1rem;}
-  </style>
-</head>
-<body>
+<BaseLayout
+  title="VPS Hosting España - Servidores Virtuales desde €10.90/mes | Avantys"
+  description="VPS hosting en España con SSD NVMe, 99.9% uptime y soporte 24/7. Servidores Linux y Windows desde €10.90/mes."
+  canonical={canonical}
+>
+  <fragment slot="header">
+    <Header />
+  </fragment>
+
   <nav class="breadcrumbs" aria-label="Migas de pan" style="background:#f8f9fa;padding:0.75rem 1rem;font-size:0.9rem;">
     <a href="/">Inicio</a> » <span aria-current="page">VPS Hosting</span>
   </nav>
@@ -108,8 +85,21 @@ const currentDate = new Date().toISOString();
     </details>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Avantys. Todos los derechos reservados.</p>
-  </footer>
-</body>
-</html>
+  <fragment slot="footer">
+    <p class="text-center py-6">&copy; 2025 Avantys. Todos los derechos reservados.</p>
+  </fragment>
+</BaseLayout>
+
+<style>
+  .hero {background:linear-gradient(135deg,#002040 0%,#2C70B1 100%);color:#fff;padding:4rem 1rem;text-align:center;}
+  .hero h1 {font-size:clamp(2rem,5vw,3rem);margin-bottom:1rem;}
+  .hero-features {display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:2rem auto;max-width:800px;}
+  .hero-feature {background:rgba(255,255,255,0.1);padding:1rem;border-radius:8px;}
+  section {padding:4rem 1rem;max-width:1200px;margin:auto;}
+  h2 {color:#002040;text-align:center;margin-bottom:2rem;font-size:2rem;}
+  ul {list-style:none;padding:0;}
+  .plan-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
+  .plan {border:1px solid #ddd;border-radius:8px;padding:1.5rem;text-align:center;}
+  .faq-item {margin-bottom:1rem;border:1px solid #e0e0e0;border-radius:8px;}
+  .faq-item summary {padding:1rem;cursor:pointer;font-weight:600;background:#f8f9fa;}
+</style>
