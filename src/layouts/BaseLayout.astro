@@ -1,0 +1,140 @@
+---
+import "../styles/global.css";
+import { SITE_CONFIG } from "../utils/constants";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  ogImage?: string;
+  bodyClass?: string;
+}
+
+const {
+  title = SITE_CONFIG.title,
+  description = SITE_CONFIG.description,
+  canonical,
+  noindex = false,
+  nofollow = false,
+  ogImage,
+  bodyClass = "",
+} = Astro.props;
+
+// Requiere tener `site` configurado en astro.config.mts
+const canonicalURL = canonical
+  ? new URL(canonical, Astro.site)
+  : new URL(Astro.url.pathname, Astro.site);
+
+const ogImageURL = ogImage
+  ? new URL(ogImage, Astro.site)
+  : new URL("/og-image.jpg", Astro.site);
+
+const fullTitle =
+  title === SITE_CONFIG.title ? title : `${title} | ${SITE_CONFIG.name}`;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <!-- Meta básicos -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO básico -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Robots -->
+    {noindex && <meta name="robots" content="noindex" />}
+    {nofollow && <meta name="robots" content="nofollow" />}
+    {(noindex && nofollow) && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL.href} />
+    <meta property="og:site_name" content={SITE_CONFIG.name} />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL.href} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL.href} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Preconnect fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Sitemap (lo expone @astrojs/sitemap) -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+
+  <body class={`min-h-screen bg-white font-museo text-text-primary antialiased ${bodyClass}`}>
+    <!-- Skip link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-white px-4 py-2 rounded-md z-50 transition"
+    >
+      Saltar al contenido principal
+    </a>
+
+    <!-- Header (con transición via Tailwind) -->
+    <header id="header" class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-border-light transition-transform duration-300 ease-in-out">
+      <slot name="header" />
+    </header>
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <footer id="footer" class="bg-primary text-white">
+      <slot name="footer" />
+    </footer>
+
+    <!-- Scripts -->
+    <script is:inline>
+      // Evitar FOUC si quieres (opcional): si usas esto, añade .loaded en CSS global
+      document.documentElement.classList.add('loaded');
+
+      // Smooth scroll para navegadores antiguos
+      if (!CSS.supports('scroll-behavior: smooth')) {
+        document.querySelectorAll('a[href^="#"]').forEach((a) => {
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+          });
+        });
+      }
+
+      // Ocultar/mostrar header al hacer scroll
+      let lastY = 0;
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (!header) return;
+        if (y > lastY && y > 100) header.style.transform = 'translateY(-100%)';
+        else header.style.transform = 'translateY(0)';
+        lastY = y;
+      });
+    </script>
+  </body>
+</html>
+<header id="header" ...>
+  <slot name="header" />
+</header>

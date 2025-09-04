@@ -1,0 +1,31 @@
+---
+import type { NavigationLink } from "../../utils/types";
+import { NAVIGATION_LINKS } from "../../utils/constants";
+import { withBase } from "../../utils/paths";
+
+const links: NavigationLink[] = NAVIGATION_LINKS;
+---
+
+<nav class="flex items-center gap-6">
+  {links.map((item) => (
+    <div class="relative group">
+      <a href={withBase(item.href)} class="text-text-secondary hover:text-accent transition-colors">
+        {item.name}
+      </a>
+
+      {item.submenu?.length ? (
+        <div class="absolute left-0 mt-2 hidden group-hover:block bg-white border border-border-light rounded shadow-card p-3 min-w-56">
+          <ul class="space-y-2">
+            {item.submenu!.map((sub) => (
+              <li>
+                <a href={withBase(sub.href)} class="block text-sm text-text-secondary hover:text-accent">
+                  {sub.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+    </div>
+  ))}
+</nav>

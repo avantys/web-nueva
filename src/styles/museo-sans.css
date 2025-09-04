@@ -1,0 +1,19 @@
+/* Importar Museo Sans desde Google Fonts o CDN */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Si tienes Museo Sans como archivo local, usar esto en su lugar: */
+/*
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('/fonts/MuseoSans-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+...
+*/
+
+/* Fallback usando Inter que es similar */
+body {
+  font-family: 'Inter', 'Museo Sans', system-ui, -apple-system, sans-serif;
+}

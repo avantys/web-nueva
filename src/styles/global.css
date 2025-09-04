@@ -1,0 +1,74 @@
+/* primero los @import */
+@import './museo-sans.css';
+/* después Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* …resto de tu CSS… */
+/* ==== Header/Nav utilities ==== */
+@layer components {
+  .site-header      { @apply relative bg-white border-b border-border-light; }
+  /* Flex en lugar de grid con columnas arbitrarias */
+  .site-header-grid { @apply flex items-center justify-between gap-6 h-20; }
+
+  .logo-link        { @apply inline-flex items-center; }
+  /* sube a h-16 si lo quieres aún mayor */
+  .logo-img         { @apply h-12 md:h-14 w-auto select-none; }
+
+  .nav              { @apply hidden lg:flex justify-center; }
+  .nav-list         { @apply flex items-center gap-8; }
+  /* Museo Sans 16 700 como pediste */
+  .nav-trigger      { @apply px-1 py-2 font-museo text-base font-bold text-text-primary transition-colors; }
+
+  /* estados hover por color */
+  .hover-primary:hover     { @apply text-primary; }
+  .hover-comienza:hover    { @apply text-comienza; }
+  .hover-crece:hover       { @apply text-crece; }
+  .hover-crea:hover        { @apply text-crea; }
+  .hover-transforma:hover  { @apply text-transforma; }
+
+  /* paneles */
+  .dropdown-panel  { @apply absolute left-0 mt-3 bg-white rounded-lg shadow-lg border border-border-light opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50; }
+  .dropdown        { @apply w-80; }
+  .megamenu        { @apply w-[52rem]; }
+
+  /* tarjetas e ítems */
+  .promo-card      { @apply rounded-lg p-4 bg-primary/5 border border-border-light; }
+  .menu-grid       { @apply grid grid-cols-2 gap-6; }
+  .menu-block      { @apply space-y-2; }
+  .menu-title      { @apply text-sm font-museo font-bold text-text-primary mb-3; }
+  .menu-link       { @apply block rounded-lg border border-border-light p-3 hover:bg-gray-50 transition; }
+  .icon-badge      { @apply flex-shrink-0 w-8 h-8 rounded-lg grid place-items-center; }
+  .menu-cta        { @apply inline-flex items-center px-4 py-2 rounded-md text-sm text-white transition-colors; }
+
+  /* tintes por color */
+  .tintbg-primary     { @apply bg-primary/10; }
+  .tint-primary       { @apply text-primary; }
+  .tintbg-comienza    { @apply bg-comienza/10; }
+  .tint-comienza      { @apply text-comienza; }
+  .tintbg-crece       { @apply bg-crece/10; }
+  .tint-crece         { @apply text-crece; }
+  .tintbg-crea        { @apply bg-crea/10; }
+  .tint-crea          { @apply text-crea; }
+  .tintbg-transforma  { @apply bg-transforma/10; }
+  .tint-transforma    { @apply text-transforma; }
+
+  .bgbtn-primary      { @apply bg-primary; }
+  .bgbtn-primary:hover{ @apply bg-primary-800; }
+  .bgbtn-comienza     { @apply bg-comienza; }
+  .bgbtn-comienza:hover{ @apply bg-comienza-dark; }
+  .bgbtn-crece        { @apply bg-crece; }
+  .bgbtn-crece:hover  { @apply bg-crece-dark; }
+  .bgbtn-crea         { @apply bg-crea; }
+  .bgbtn-crea:hover   { @apply bg-crea-dark; }
+  .bgbtn-transforma   { @apply bg-transforma; }
+  .bgbtn-transforma:hover { @apply bg-transforma-dark; }
+
+  /* acciones */
+  .btn-client  { @apply hidden lg:inline-flex items-center px-4 py-2 border border-primary text-sm font-medium rounded-md text-primary hover:bg-primary hover:text-white transition-colors duration-200; }
+  .btn-burger  { @apply lg:hidden p-2 rounded-md text-text-primary hover:text-primary hover:bg-gray-100 transition-colors duration-200; }
+
+  /* móvil */
+  .mobile-link    { @apply block px-3 py-2 text-base font-museo font-bold text-text-primary hover:text-primary hover:bg-gray-50 rounded-md transition-colors; }
+  .mobile-sublink { @apply block px-3 py-2 text-sm text-text-secondary hover:text-primary hover:bg-gray-50 rounded-md transition-colors; }
+}
