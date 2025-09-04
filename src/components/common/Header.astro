@@ -41,7 +41,6 @@ import { withBase } from '../../utils/paths';
 
                   {/* Megamenús personalizados */}
                   {isComienza && (
-                  <div id={link.name.toLowerCase()} class="dropdown-panel megamenu" data-open="false">
                     <div class="grid grid-cols-12">
                       <!-- Promos izquierda -->
                       <div class="col-span-5 p-6 border-r border-border-light">
@@ -120,7 +119,6 @@ import { withBase } from '../../utils/paths';
                 )}
 
                   {isCrea && (
-                    <div id={link.name.toLowerCase()} class="dropdown-panel megamenu" data-open="false">
                       <div class="grid grid-cols-12">
                         <div class="col-span-5 p-6 border-r border-border-light">
                           <div class="space-y-4">
@@ -170,7 +168,6 @@ import { withBase } from '../../utils/paths';
                   )}
 
                   {isCrece && (
-                    <div id={link.name.toLowerCase()} class="dropdown-panel megamenu" data-open="false">
                       <div class="grid grid-cols-12">
                         <div class="col-span-5 p-6 border-r border-border-light">
                           <div class="space-y-4">
@@ -227,7 +224,6 @@ import { withBase } from '../../utils/paths';
                   )}
 
                   {isTransforma && (
-                    <div id={link.name.toLowerCase()} class="dropdown-panel megamenu" data-open="false">
                       <div class="grid grid-cols-12">
                         <div class="col-span-5 p-6 border-r border-border-light">
                           <div class="space-y-4">
@@ -353,7 +349,6 @@ import { withBase } from '../../utils/paths';
 
                   {/* Dropdown simple para el resto */}
                   {!(isComienza || isCrece || isCrea || isTransforma) && hasSub && (
-                  <div id={link.name.toLowerCase()} class="dropdown-panel dropdown" data-open="false">
                     <div class="p-4 grid grid-cols-1 gap-2">
                       {link.submenu!.map((sublink) => (
                         <a href={withBase(sublink.href)} class="menu-link">
