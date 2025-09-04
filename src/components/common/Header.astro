@@ -19,8 +19,12 @@ import { withBase } from '../../utils/paths';
         <div class="nav-list">
           {NAVIGATION_LINKS.map((link) => {
             const color = (link.color ?? 'primary') as 'primary'|'comienza'|'crece'|'crea'|'transforma';
-            const hasSub = Array.isArray(link.submenu) && link.submenu.length > 0;
-            const isComienza = hasSub && link.name.toLowerCase() === 'comienza';
+              const hasSub = Array.isArray(link.submenu) && link.submenu.length > 0;
+              const key = link.name.toLowerCase();
+              const isComienza = hasSub && key === 'comienza';
+              const isCrece = hasSub && key === 'crece';
+              const isCrea = hasSub && key === 'crea';
+              const isTransforma = hasSub && key === 'transforma';
 
             return (
               <div class="relative group">
@@ -35,8 +39,8 @@ import { withBase } from '../../utils/paths';
                   <a href={withBase(link.href)} class={`nav-trigger hover-${color}`}>{link.name}</a>
                 )}
 
-                {/* Megamenú "Comienza" */}
-                {isComienza && (
+                  {/* Megamenús personalizados */}
+                  {isComienza && (
                   <div id={link.name.toLowerCase()} class="dropdown-panel megamenu">
                     <div class="grid grid-cols-12">
                       <!-- Promos izquierda -->
@@ -115,8 +119,240 @@ import { withBase } from '../../utils/paths';
                   </div>
                 )}
 
-                {/* Dropdown simple para el resto */}
-                {!isComienza && hasSub && (
+                  {isCrea && (
+                    <div id={link.name.toLowerCase()} class="dropdown-panel megamenu">
+                      <div class="grid grid-cols-12">
+                        <div class="col-span-5 p-6 border-r border-border-light">
+                          <div class="space-y-4">
+                            <div class="promo-card">
+                              <h3 class="text-base font-bold text-text-primary">Sobre Avantys</h3>
+                              <p class="text-sm text-text-secondary mt-1">Descubre nuestras soluciones de alojamiento web con cPanel, CloudLinux y LiteSpeed en discos SSD NVMe, diseñadas para impulsar la velocidad y seguridad de tu sitio web.</p>
+                              <a href={withBase('/sobre-avantys')} class={`menu-cta bgbtn-${color} mt-3`}>Más información</a>
+                            </div>
+                            <div class="promo-card">
+                              <h3 class="text-base font-bold text-text-primary">Sobre Avantys</h3>
+                              <p class="text-sm text-text-secondary mt-1">Descubre nuestras soluciones de alojamiento web con cPanel, CloudLinux y LiteSpeed en discos SSD NVMe, diseñadas para impulsar la velocidad y seguridad de tu sitio web.</p>
+                              <a href={withBase('/sobre-avantys')} class={`menu-cta bgbtn-${color} mt-3`}>Más información</a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-span-7 p-6">
+                          <div class="menu-grid grid-cols-1">
+                            <div class="menu-block">
+                              <a href={withBase('/crea/desarrollo-web')} class="menu-link">
+                                <div class="flex items-start gap-3">
+                                  <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                  <div class="flex-1">
+                                    <div class="text-sm font-semibold text-text-primary">Desarrollo Web</div>
+                                    <p class="text-xs text-text-secondary mt-1">Webs que conectan, convencen y convierten.</p>
+                                  </div>
+                                </div>
+                              </a>
+                              <a href={withBase('/crea/creador-web')} class="menu-link">
+                                <div class="flex items-start gap-3">
+                                  <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                  <div class="flex-1">
+                                    <div class="text-sm font-semibold text-text-primary">Creador de webs gratuito</div>
+                                    <p class="text-xs text-text-secondary mt-1">Creatividad visual que impulsa tu marca al siguiente nivel.</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+
+                          <div class="mt-5 pt-4 border-t border-border-light">
+                            <a href={withBase(link.href)} class={`menu-cta bgbtn-${color}`}>Ver todos los servicios de {link.name}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {isCrece && (
+                    <div id={link.name.toLowerCase()} class="dropdown-panel megamenu">
+                      <div class="grid grid-cols-12">
+                        <div class="col-span-5 p-6 border-r border-border-light">
+                          <div class="space-y-4">
+                            <div class="promo-card">
+                              <h3 class="text-base font-bold text-text-primary">Sobre Avantys</h3>
+                              <p class="text-sm text-text-secondary mt-1">Descubre nuestras soluciones de alojamiento web con cPanel, CloudLinux y LiteSpeed en discos SSD NVMe, diseñadas para impulsar la velocidad y seguridad de tu sitio web.</p>
+                              <a href={withBase('/sobre-avantys')} class={`menu-cta bgbtn-${color} mt-3`}>Más información</a>
+                            </div>
+                            <div class="promo-card">
+                              <h3 class="text-base font-bold text-text-primary">Sobre Avantys</h3>
+                              <p class="text-sm text-text-secondary mt-1">Descubre nuestras soluciones de alojamiento web con cPanel, CloudLinux y LiteSpeed en discos SSD NVMe, diseñadas para impulsar la velocidad y seguridad de tu sitio web.</p>
+                              <a href={withBase('/sobre-avantys')} class={`menu-cta bgbtn-${color} mt-3`}>Más información</a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-span-7 p-6">
+                          <div class="menu-grid grid-cols-3">
+                            <a href={withBase('/crece/growth-360')} class="menu-link">
+                              <div class="flex items-start gap-3">
+                                <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                <div class="flex-1">
+                                  <div class="text-sm font-semibold text-text-primary">Growth 360</div>
+                                  <p class="text-xs text-text-secondary mt-1">Estrategias digitales que impulsan tu marca hacia el éxito en línea.</p>
+                                </div>
+                              </div>
+                            </a>
+                            <a href={withBase('/crece/redes-sociales')} class="menu-link">
+                              <div class="flex items-start gap-3">
+                                <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                <div class="flex-1">
+                                  <div class="text-sm font-semibold text-text-primary">Redes Sociales</div>
+                                  <p class="text-xs text-text-secondary mt-1">Conecta, interactúa y crece con tu audiencia.</p>
+                                </div>
+                              </div>
+                            </a>
+                            <a href={withBase('/crece/marketing-deportivo')} class="menu-link">
+                              <div class="flex items-start gap-3">
+                                <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                <div class="flex-1">
+                                  <div class="text-sm font-semibold text-text-primary">Marketing Deportivo</div>
+                                  <p class="text-xs text-text-secondary mt-1">Gestión de marcas y eventos con los deportistas.</p>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+
+                          <div class="mt-5 pt-4 border-t border-border-light">
+                            <a href={withBase(link.href)} class={`menu-cta bgbtn-${color}`}>Ver todos los servicios de {link.name}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {isTransforma && (
+                    <div id={link.name.toLowerCase()} class="dropdown-panel megamenu">
+                      <div class="grid grid-cols-12">
+                        <div class="col-span-5 p-6 border-r border-border-light">
+                          <div class="space-y-4">
+                            <div class="promo-card">
+                              <h3 class="text-base font-bold text-text-primary">Sobre Avantys</h3>
+                              <p class="text-sm text-text-secondary mt-1">Descubre nuestras soluciones de alojamiento web con cPanel, CloudLinux y LiteSpeed en discos SSD NVMe, diseñadas para impulsar la velocidad y seguridad de tu sitio web.</p>
+                              <a href={withBase('/sobre-avantys')} class={`menu-cta bgbtn-${color} mt-3`}>Más información</a>
+                            </div>
+                            <div class="promo-card">
+                              <h3 class="text-base font-bold text-text-primary">Sobre Avantys</h3>
+                              <p class="text-sm text-text-secondary mt-1">Descubre nuestras soluciones de alojamiento web con cPanel, CloudLinux y LiteSpeed en discos SSD NVMe, diseñadas para impulsar la velocidad y seguridad de tu sitio web.</p>
+                              <a href={withBase('/sobre-avantys')} class={`menu-cta bgbtn-${color} mt-3`}>Más información</a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-span-7 p-6">
+                          <div class="menu-grid grid-cols-4">
+                            <div>
+                              <h4 class="menu-title">Cloud</h4>
+                              <div class="menu-block">
+                                <a href={withBase('/transforma/cloud')} class="menu-link">
+                                  <div class="flex items-start gap-3">
+                                    <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                    <div class="flex-1">
+                                      <div class="text-sm font-semibold text-text-primary">Instancias Cloud</div>
+                                      <p class="text-xs text-text-secondary mt-1">Escalabilidad instantánea sin límites con administrador dedicado.</p>
+                                    </div>
+                                  </div>
+                                </a>
+                                <a href={withBase('/transforma/cloud-dedicado')} class="menu-link">
+                                  <div class="flex items-start gap-3">
+                                    <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                    <div class="flex-1">
+                                      <div class="text-sm font-semibold text-text-primary">Instancias dedicadas</div>
+                                      <p class="text-xs text-text-secondary mt-1">Potencia exclusiva para proyectos críticos.</p>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+
+                            <div>
+                              <h4 class="menu-title">Servidores</h4>
+                              <div class="menu-block">
+                                <a href={withBase('/transforma/vps-linux')} class="menu-link">
+                                  <div class="flex items-start gap-3">
+                                    <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                    <div class="flex-1">
+                                      <div class="text-sm font-semibold text-text-primary">VPS Linux</div>
+                                      <p class="text-xs text-text-secondary mt-1">Potencia y control total con Linux.</p>
+                                    </div>
+                                  </div>
+                                </a>
+                                <a href={withBase('/transforma/vps-windows')} class="menu-link">
+                                  <div class="flex items-start gap-3">
+                                    <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                    <div class="flex-1">
+                                      <div class="text-sm font-semibold text-text-primary">VPS Windows</div>
+                                      <p class="text-xs text-text-secondary mt-1">El servidor compatible para tu entorno Microsoft.</p>
+                                    </div>
+                                  </div>
+                                </a>
+                                <a href={withBase('/transforma/vps-trader')} class="menu-link">
+                                  <div class="flex items-start gap-3">
+                                    <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                    <div class="flex-1">
+                                      <div class="text-sm font-semibold text-text-primary">VPS Trader</div>
+                                      <p class="text-xs text-text-secondary mt-1">Rendimiento optimizado para entornos de trading.</p>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+
+                            <div>
+                              <h4 class="menu-title">Administración de servidores</h4>
+                              <div class="menu-block">
+                                <a href={withBase('/transforma/administracion-servidores')} class="menu-link">
+                                  <div class="flex items-start gap-3">
+                                    <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                    <div class="flex-1">
+                                      <div class="text-sm font-semibold text-text-primary">Administración de servidores</div>
+                                      <p class="text-xs text-text-secondary mt-1">Maximiza el potencial de tu infraestructura con gestión proactiva y soporte 24/7.</p>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+
+                            <div>
+                              <h4 class="menu-title">Paneles de Control</h4>
+                              <div class="menu-block">
+                                <a href={withBase('/transforma/paneles-control')} class="menu-link">
+                                  <div class="flex items-start gap-3">
+                                    <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                    <div class="flex-1">
+                                      <div class="text-sm font-semibold text-text-primary">cPanel</div>
+                                      <p class="text-xs text-text-secondary mt-1">Control total con la interfaz líder del mercado.</p>
+                                    </div>
+                                  </div>
+                                </a>
+                                <a href={withBase('/transforma/paneles-control')} class="menu-link">
+                                  <div class="flex items-start gap-3">
+                                    <div class={`icon-badge tintbg-${color}`}><svg class={`w-4 h-4 tint-${color}`} viewBox="0 0 20 20" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                                    <div class="flex-1">
+                                      <div class="text-sm font-semibold text-text-primary">Plesk</div>
+                                      <p class="text-xs text-text-secondary mt-1">La alternativa flexible para tu servidor.</p>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="mt-5 pt-4 border-t border-border-light">
+                            <a href={withBase(link.href)} class={`menu-cta bgbtn-${color}`}>Ver todos los servicios de {link.name}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Dropdown simple para el resto */}
+                  {!(isComienza || isCrece || isCrea || isTransforma) && hasSub && (
                   <div id={link.name.toLowerCase()} class="dropdown-panel dropdown">
                     <div class="p-4 grid grid-cols-1 gap-2">
                       {link.submenu!.map((sublink) => (
