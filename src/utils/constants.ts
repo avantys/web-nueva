@@ -26,10 +26,9 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
     href: '/crece',
     color: 'crece',
     submenu: [
-      { name: 'Marketing Digital', href: '/crece/marketing-digital' },
-      { name: 'Publicidad Online', href: '/crece/publicidad-online' },
-      { name: 'Posicionamiento SEO', href: '/crece/seo' },
+      { name: 'Growth 360', href: '/crece/growth-360' },
       { name: 'Redes Sociales', href: '/crece/redes-sociales' },
+      { name: 'Marketing Deportivo', href: '/crece/marketing-deportivo' },
     ],
   },
   {
@@ -37,9 +36,8 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
     href: '/crea',
     color: 'crea',
     submenu: [
-      { name: 'Diseño Gráfico', href: '/crea/diseno-grafico' },
-      { name: 'Diseño Web', href: '/crea/diseno-web' },
-      { name: 'Ecommerce', href: '/crea/ecommerce' },
+      { name: 'Desarrollo Web', href: '/crea/desarrollo-web' },
+      { name: 'Creador de webs gratuito', href: '/crea/creador-web' },
     ],
   },
   {
@@ -47,10 +45,10 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
     href: '/transforma',
     color: 'transforma',
     submenu: [
-      { name: 'Administración de Servidores', href: '/transforma/administracion-servidores' },
-      { name: 'VPS Linux', href: '/transforma/vps-linux' },
-      { name: 'VPS Windows', href: '/transforma/vps-windows' },
       { name: 'Cloud', href: '/transforma/cloud' },
+      { name: 'Servidores', href: '/transforma/servidores' },
+      { name: 'Administración de Servidores', href: '/transforma/administracion-servidores' },
+      { name: 'Paneles de Control', href: '/transforma/paneles-control' },
     ],
   },
   {
