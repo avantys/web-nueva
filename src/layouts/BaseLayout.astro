@@ -1,4 +1,5 @@
 ---
+// src/layouts/BaseLayout.astro
 import "../styles/global.css";
 import { SITE_CONFIG } from "../utils/constants";
 
@@ -22,15 +23,15 @@ const {
   bodyClass = "",
 } = Astro.props;
 
-// Requiere tener `site` configurado en astro.config.mts
-const canonicalURL = canonical
-  ? new URL(canonical, Astro.site)
-  : new URL(Astro.url.pathname, Astro.site);
+// Base robusta: usa Astro.site en prod y el origin real en dev
+const requestURL = new URL(Astro.request.url);
+const siteBase: URL = Astro.site ?? requestURL;
 
-const ogImageURL = ogImage
-  ? new URL(ogImage, Astro.site)
-  : new URL("/og-image.jpg", Astro.site);
+// Canonical y OG
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, siteBase);
+const ogImageURL   = new URL(ogImage ?? "/og-image.jpg", siteBase);
 
+// Título final
 const fullTitle =
   title === SITE_CONFIG.title ? title : `${title} | ${SITE_CONFIG.name}`;
 ---
@@ -38,7 +39,7 @@ const fullTitle =
 <!doctype html>
 <html lang="es" class="scroll-smooth">
   <head>
-    <!-- Meta básicos -->
+    <!-- Meta -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
@@ -80,7 +81,7 @@ const fullTitle =
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Sitemap (lo expone @astrojs/sitemap) -->
+    <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
 
@@ -93,7 +94,7 @@ const fullTitle =
       Saltar al contenido principal
     </a>
 
-    <!-- Header (con transición via Tailwind) -->
+    <!-- Header -->
     <header id="header" class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-border-light transition-transform duration-300 ease-in-out">
       <slot name="header" />
     </header>
@@ -108,10 +109,8 @@ const fullTitle =
 
     <!-- Scripts -->
     <script is:inline>
-      // Evitar FOUC si quieres (opcional): si usas esto, añade .loaded en CSS global
       document.documentElement.classList.add('loaded');
 
-      // Smooth scroll para navegadores antiguos
       if (!CSS.supports('scroll-behavior: smooth')) {
         document.querySelectorAll('a[href^="#"]').forEach((a) => {
           a.addEventListener('click', (e) => {
@@ -122,19 +121,14 @@ const fullTitle =
         });
       }
 
-      // Ocultar/mostrar header al hacer scroll
       let lastY = 0;
       const header = document.getElementById('header');
       window.addEventListener('scroll', () => {
         const y = window.scrollY;
         if (!header) return;
-        if (y > lastY && y > 100) header.style.transform = 'translateY(-100%)';
-        else header.style.transform = 'translateY(0)';
+        header.style.transform = (y > lastY && y > 100) ? 'translateY(-100%)' : 'translateY(0)';
         lastY = y;
       });
     </script>
   </body>
 </html>
-<header id="header" ...>
-  <slot name="header" />
-</header>
