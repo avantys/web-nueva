@@ -28,7 +28,7 @@
   .hover-transforma:hover  { @apply text-transforma; }
 
   /* paneles */
-  .dropdown-panel  { @apply absolute left-0 mt-3 bg-white rounded-lg shadow-lg border border-border-light opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50; }
+  .dropdown-panel  { @apply absolute left-0 mt-3 bg-white rounded-lg shadow-lg border border-border-light opacity-0 invisible transition-all duration-200 translate-y-2 z-50 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 data-[open=true]:opacity-100 data-[open=true]:visible data-[open=true]:translate-y-0; }
   .dropdown        { @apply w-80; }
   .megamenu        { @apply w-[52rem]; }
 

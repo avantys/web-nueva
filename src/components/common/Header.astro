@@ -41,7 +41,6 @@ import { withBase } from '../../utils/paths';
 
                   {/* Megamenús personalizados */}
                   {isComienza && (
-                  <div id={link.name.toLowerCase()} class="dropdown-panel megamenu">
                     <div class="grid grid-cols-12">
                       <!-- Promos izquierda -->
                       <div class="col-span-5 p-6 border-r border-border-light">
@@ -120,7 +119,6 @@ import { withBase } from '../../utils/paths';
                 )}
 
                   {isCrea && (
-                    <div id={link.name.toLowerCase()} class="dropdown-panel megamenu">
                       <div class="grid grid-cols-12">
                         <div class="col-span-5 p-6 border-r border-border-light">
                           <div class="space-y-4">
@@ -170,7 +168,6 @@ import { withBase } from '../../utils/paths';
                   )}
 
                   {isCrece && (
-                    <div id={link.name.toLowerCase()} class="dropdown-panel megamenu">
                       <div class="grid grid-cols-12">
                         <div class="col-span-5 p-6 border-r border-border-light">
                           <div class="space-y-4">
@@ -227,7 +224,6 @@ import { withBase } from '../../utils/paths';
                   )}
 
                   {isTransforma && (
-                    <div id={link.name.toLowerCase()} class="dropdown-panel megamenu">
                       <div class="grid grid-cols-12">
                         <div class="col-span-5 p-6 border-r border-border-light">
                           <div class="space-y-4">
@@ -353,7 +349,6 @@ import { withBase } from '../../utils/paths';
 
                   {/* Dropdown simple para el resto */}
                   {!(isComienza || isCrece || isCrea || isTransforma) && hasSub && (
-                  <div id={link.name.toLowerCase()} class="dropdown-panel dropdown">
                     <div class="p-4 grid grid-cols-1 gap-2">
                       {link.submenu!.map((sublink) => (
                         <a href={withBase(sublink.href)} class="menu-link">
@@ -415,22 +410,48 @@ import { withBase } from '../../utils/paths';
   document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
-    if (!btn || !menu) return;
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const isHidden = menu.classList.contains('hidden');
+        menu.classList.toggle('hidden', !isHidden);
+        btn.setAttribute('aria-expanded', String(isHidden));
+      });
 
-    btn.addEventListener('click', () => {
-      const isHidden = menu.classList.contains('hidden');
-      menu.classList.toggle('hidden', !isHidden);
-      btn.setAttribute('aria-expanded', String(isHidden));
+      document.addEventListener('click', (e) => {
+        const t = e.target;
+        if (!(t instanceof Node)) return;
+        if (!menu.contains(t) && !btn.contains(t)) {
+          menu.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      }, true);
+    }
+
+    const dropdownButtons = document.querySelectorAll('.nav-trigger[data-dropdown-toggle]');
+    dropdownButtons.forEach((button) => {
+      const target = button.getAttribute('data-dropdown-toggle');
+      if (!target) return;
+      const panel = document.getElementById(target);
+      if (!panel) return;
+
+      button.addEventListener('click', () => {
+        const isOpen = panel.getAttribute('data-open') === 'true';
+        document.querySelectorAll('.dropdown-panel[data-open="true"]').forEach((p) => {
+          p.setAttribute('data-open', 'false');
+        });
+        panel.setAttribute('data-open', String(!isOpen));
+        button.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      document.addEventListener('click', (e) => {
+        const t = e.target;
+        if (!(t instanceof Node)) return;
+        if (!panel.contains(t) && !button.contains(t)) {
+          panel.setAttribute('data-open', 'false');
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
     });
-
-    document.addEventListener('click', (e) => {
-      const t = e.target;
-      if (!(t instanceof Node)) return;
-      if (!menu.contains(t) && !btn.contains(t)) {
-        menu.classList.add('hidden');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    }, true);
   });
 </script>
 
